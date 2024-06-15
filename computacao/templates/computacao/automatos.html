@@ -1,0 +1,56 @@
+{% extends 'computacao/layout.html' %}
+
+{% block main %}
+
+    <main class="col-sm-12 text-center">
+
+        <h3>Autómatos Finitos Determinísticos (AFD)</h3>
+
+        <p>Apresentam-se em baixo autómatos que foram criados.</p>
+        <br><br>
+        <table align="center" class="table" style="max-width:900px">
+            <tr>
+                <th class="text-center">Diagrama de Estados</th>
+                <th class="text-center">Descrição</th>
+            </tr>
+            {% load static %}
+            {% for automato in automatos %}
+                <tr class="text-left">
+                    <td>
+                        <a href="{% url 'computacao:automato' automato.id %}">
+                            <img src="{{ automato.diagrama.url }}" alt="" width="80%">
+                        </a>
+                    </td>
+                    <td style="vertical-align:bottom">
+                        <p>{{ automato.descricao }}</p>
+                        <p>
+                            <a href="{% url 'computacao:automato' automato.id %}" class="btn btn-info  btn-sm">
+                                Detalhes
+                            </a>
+                            <a href="{% url 'computacao:automato' automato.id %}" class="btn btn-success  btn-sm">
+                                Validar Sequência
+                            </a>
+                            <a href="{% url 'computacao:edita_automato' automato.id %}" class="btn btn-warning  btn-sm">
+                                Editar AFD
+                            </a>
+                            <a href="{% url 'computacao:apaga_automato' automato.id %}" class="btn btn-danger  btn-sm">
+                                Apagar AFD
+                            </a>
+                        </p>
+
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </table>
+
+        <a href="{% url 'computacao:novo_automato' %}" class="btn btn-success btn-sm btn-block">
+            Crie um novo AFD
+        </a>
+
+    </main>
+
+{% endblock %}
+
+{% block aside %}
+{% endblock %}

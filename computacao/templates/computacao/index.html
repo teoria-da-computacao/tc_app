@@ -1,0 +1,41 @@
+{% extends 'computacao/layout.html' %}
+
+{% block main %}
+    <main class="col-sm-6">
+        <blockquote class="blockquote">
+            <p class="mb-0">Os limites da minha linguagem são os limites do meu mundo.</p>
+            <footer class="blockquote-footer">Ludwig Wittgnestein</footer>
+        </blockquote>
+        <p>A teoria da computação é um subcampo da ciência da computação e matemática que busca determinar quais
+            problemas podem ser computados em um dado modelo de computação. A computação pode ser definida como a
+            solução de um problema ou, formalmente, o cálculo de uma função por meio de um algoritmo. Apesar de
+            intuitivo na história humana, o conceito de execução de uma tarefa com passos finitos a fim de se obter um
+            resultado, ou seja, um algoritmo, não possuía uma definição formal até a conceituação do modelo de Máquina
+            Universal de Turing.</p>
+        <!--
+                <p>Qualquer linguagem é necessáriamente um sistema finito aplicado, com diferentes graus de criatividade a uma
+                    variedade infinita de situações. David Lodge</p>
+                <p>A linguagem é uma forma da razão humana, que tem sua lógica interna da qual o homem nada sabe. Claude
+                    Levi-Strauss</p>
+                <p>As máquinas são adoradas porque são bonitas e valorizadas porque conferem poder; são odiadas porque são
+                    hediondas e porque impõem a escravidão. Bertrand Russel.</p>
+                <p>A teoria pode deixar perguntas sem resposta, mas a prática tem que inventar algo. Mason Cooley</p>
+        -->
+    </main>
+
+    <aside class="col-sm-6 text-center">
+        <br><br><br>
+        {% load static %}
+        <img src="{% static 'computacao/images/turing-machine.png' %}" alt="">
+        <blockquote class="blockquote">
+            <p class="mb-0">Uma máquina pode fazer o trabalho de cinquenta homens comuns. Nenhuma máquina pode fazer o
+                trabalho de um
+                homem extraordinário.</p>
+            <footer class="blockquote-footer">Elbert Hubbard</footer>
+        </blockquote>
+    </aside>
+
+{% endblock %}
+
+
+

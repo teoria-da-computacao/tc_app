@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+   <!--
+    templates:
+        https://www.w3schools.com/bootstrap/bootstrap_templates.asp
+      https://www.w3schools.com/bootstrap/
+      https://www.w3schools.com/w3css/w3css_templates.asp
+
+      how to create a Web Page: https://www.w3schools.com/w3css/w3css_web_tmp_band.asp
+   -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoría da Computação</title>
+
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'computacao/images/favicon.png' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{% static 'computacao/style.css' %}">
+
+</head>
+<body>
+    <header class="jumbotron text-center">
+        <h1>Teoría da Computação</h1>
+        <nav>
+            <a href="{% url 'computacao:index' %}" class="btn btn-info" role="button">Introdução</a>
+            <a href="{% url 'computacao:automatos' %}" class="btn btn-info" role="button">Autómatos</a>
+            <a href="" class="btn btn-info" role="button">Máquinas de Turing</a>
+        </nav>
+    </header>
+    <div  class="text-center">
+         {% block main %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

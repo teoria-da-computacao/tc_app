@@ -1,0 +1,76 @@
+{% extends 'computacao/layout.html' %}
+
+{% block main %}
+
+
+    <main class="col-sm-12">
+
+        <h3>{{ automato.nome|title }}</h3>
+
+        <p>{{ automato.descricao }}.</p>
+
+        <table align="center">
+            <tr align="left">
+                <td>
+                    <p> <b>Quíntuplo do autómato</b></p>
+                    <ul>
+                    <li>Alfabeto: {{ automato.printAlfabeto }} </li>
+                    <li>Estados: {{ automato.printEstados }}</li>
+                    <li>Estado inicial: {{ automato.estadoInicial }}</li>
+                    <li>Estados aceitação: {{ automato.printEstadosDeAceitacao }}</li>
+
+                    <li>Tabela de transições:
+                    <table align="center" rules="all" style="border-collapse: collapse; padding:5px;">
+                        {% for dTran in automato.dTransInTable %}
+                            <tr>
+                                {% for element in dTran %}
+                                    {% if forloop.parentloop.first %}
+                                        <th style="padding:5px;">{{ element }}</th>
+                                    {% elif forloop.first %}
+                                        <th style="padding:5px;">{{ element }}</th>
+                                    {% else %}
+                                        <td style="padding:5px;">{{ element }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    </ul>
+                </li>
+                </td>
+                <td>
+                    <p style="text-align: right; margin-top: -15px;"><b>Diagrama de transições</b></p>
+                    {% load static %}
+                    <img src="{{ automato.diagrama.url }}" alt="">
+
+                </td>
+            </tr>
+        </table>
+
+
+        <br>
+        <p><b>Validador:</b> Insira uma sequência e verifique se pertence à linguagem que o AFD reconhece: </p>
+        <form action="{% url 'computacao:automato' automato.id %}" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="validar" class="btn btn-success">
+        </form>
+
+        {% if resultado != None %}
+            {% if resultado == True %}
+                <p>A sequência <b>{{ sequencia }}</b> é aceite pelo autómato </p>
+            {% else %}
+                <p>A sequência <b>{{ sequencia }}</b> não é aceite pelo autómato </p>
+            {% endif %}
+        {% else %}
+            <br><br>
+        {% endif %}
+
+
+    </main>
+
+{% endblock %}
+
+
+{% block aside %}
+{% endblock %}

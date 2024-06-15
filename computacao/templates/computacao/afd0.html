@@ -1,0 +1,23 @@
+{% extends 'computacao/layout.html' %}
+
+{% block main %}
+    <main class="col-sm-6">
+        <h3>Autómato Finito Determinístico</h3>
+        <p>{{ descricao }}. Valide uma sequência, verificando se faz parte da linguagem que esta reconhece: </p>
+        <form action="{% url 'computacao:afd0' %}" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="validar">
+        </form>
+
+        {% if resultado != None %}
+           {% if resultado == True %}
+               <br><p>A sequência <code>{{ sequencia }}</code> é aceite pelo autómato </p>
+           {% else %}
+               <br><p>A sequência <code>{{ sequencia }}</code> não é aceite pelo autómato </p>
+           {% endif %}
+        {% else %}
+            <br><br>
+        {% endif %}
+    </main>
+{% endblock %}
